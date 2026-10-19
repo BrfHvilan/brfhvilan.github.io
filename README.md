@@ -79,10 +79,15 @@ Kontrollera att länken fungerar genom att klicka på den i webbläsaren.
 
 ### 4. Byta bild på startsidan
 
-1. Lägg bilden i mappen `bilder/`, t.ex. `bilder/huset.jpg`. Gör den gärna ca 2000 px
-   bred och under 500 kB (komprimera på t.ex. squoosh.app).
-2. I `index.html`, ändra `src="bilder/platshallare.svg"` till `src="bilder/huset.jpg"`.
-3. Ändra `alt="…"` till en kort beskrivning av bilden (läses upp för synskadade).
+Bilden visas i sin naturliga storlek till höger om texten om föreningen (i mobilen
+ovanför texten). Den beskärs aldrig och blir aldrig större än den är.
+
+1. Lägg bilden i mappen `bilder/`, t.ex. `bilder/huset.jpg`. Max ca 450 px bred passar
+   bra bredvid texten. Håll den under 300 kB (komprimera på t.ex. squoosh.app).
+2. I `index.html`, ändra `src="bilder/fasad.jpg"` till den nya filen, och ändra
+   `width` och `height` till bildens mått i pixlar.
+3. Ändra `alt="…"` till en kort beskrivning av bilden (läses upp för synskadade) och
+   texten i `<figcaption>`.
 
 ### 5. Uppdatera faktarutan för mäklare
 

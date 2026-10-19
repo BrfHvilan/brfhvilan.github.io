@@ -196,23 +196,33 @@ h3 {
 
 /* ---------- Startsida ---------- */
 
-.hero {
-  margin: 1.5rem 0 0;
+/* Text och bild sida vid sida; bilden i naturlig storlek, aldrig beskuren eller förstorad.
+   I mobilen hamnar bilden ovanför texten (se mobilavsnittet längst ner). */
+.om {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "text bild";
+  gap: 1.5rem 2.5rem;
+  align-items: start;
+}
+
+.om-text {
+  grid-area: text;
+}
+
+.om-bild {
+  grid-area: bild;
+  margin: 0;
+}
+
+.om-bild img {
   border-radius: 6px;
-  overflow: hidden;
-  background: var(--gron-ljus);
 }
 
-.hero img {
-  width: 100%;
-  aspect-ratio: 5 / 2;
-  object-fit: cover;
-}
-
-.hero figcaption {
+.om-bild figcaption {
   font-size: 0.9rem;
   color: var(--text-dampad);
-  padding: 0.5rem 0.75rem;
+  margin-top: 0.4rem;
 }
 
 .genvagar {
@@ -489,8 +499,15 @@ details[open] summary {
     padding-top: 0.25rem;
   }
 
-  .hero img {
-    aspect-ratio: 3 / 2;
+}
+
+/* Bild ovanför texten när det inte finns plats för båda bredvid varandra */
+@media (max-width: 760px) {
+  .om {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "bild"
+      "text";
   }
 }
 
