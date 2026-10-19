@@ -1,0 +1,12 @@
+Lägg föreningens PDF-filer i den här mappen.
+
+Sidan länkar till följande filnamn (byt [ÅÅÅÅ] mot årtal):
+  stadgar.pdf
+  ordningsregler.pdf
+  arsredovisning-[ÅÅÅÅ].pdf   (t.ex. arsredovisning-2025.pdf)
+  energideklaration.pdf
+  ansokan-andrahandsuthyrning.pdf
+  ansokan-renovering.pdf
+
+Använd små bokstäver och inga mellanslag eller å/ä/ö i filnamnen.
+Den här textfilen kan tas bort när PDF:erna är på plats.

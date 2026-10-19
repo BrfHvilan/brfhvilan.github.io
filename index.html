@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BRF Hvilan – Start</title>
+  <meta name="description" content="Bostadsrättsföreningen Hvilan i Stockholm – information för medlemmar och mäklare.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="hoppa" href="#innehall">Hoppa till innehållet</a>
+
+  <!-- ===== SIDHUVUD (samma på alla sidor) ===== -->
+  <header class="sidhuvud">
+    <div class="wrap">
+      <a class="logga" href="index.html">BRF Hvilan</a>
+      <nav class="meny" aria-label="Huvudmeny">
+        <ul>
+          <li><a href="index.html" aria-current="page">Start</a></li>
+          <li><a href="aktuellt.html">Aktuellt</a></li>
+          <li><a href="maklare.html">För mäklare</a></li>
+          <li><a href="medlemmar.html">För medlemmar</a></li>
+          <li><a href="dokument.html">Dokument</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- ===== SLUT SIDHUVUD ===== -->
+
+  <main id="innehall">
+    <div class="wrap">
+      <h1>Välkommen till BRF Hvilan</h1>
+      <p class="ingress">
+        Bostadsrättsföreningen Hvilan äger och förvaltar fastigheten [fastighetsbeteckning]
+        på [gatuadress] i [stadsdel], Stockholm. Föreningen bildades [år] och har
+        [X] lägenheter och [X] lokaler.
+      </p>
+
+      <figure class="hero">
+        <!-- Byt ut bilden: lägg en egen bild i mappen bilder/ och ändra src nedan, t.ex. bilder/huset.jpg -->
+        <img src="bilder/platshallare.svg" alt="[Beskrivning av bilden, t.ex. Fasaden mot gatan]" width="1000" height="400">
+        <figcaption>[Bildtext, t.ex. Huset på [gatuadress] sett från gatan.]</figcaption>
+      </figure>
+
+      <p>
+        [Kort text om föreningen – t.ex. husets historia, gården, närhet till kommunikationer
+        och vad som gör föreningen speciell. 2–4 meningar räcker.]
+      </p>
+
+      <div class="genvagar">
+        <a href="maklare.html"><strong>För mäklare</strong>Faktaruta, avgifter och renoveringar</a>
+        <a href="medlemmar.html"><strong>För medlemmar</strong>Trivselregler, tvättstuga och vanliga frågor</a>
+        <a href="kontakt.html"><strong>Felanmälan</strong>Akut och icke-akut</a>
+      </div>
+
+      <h2>Senaste nytt</h2>
+      <!-- Här visas de 3 senaste nyheterna. Kopiera dem från aktuellt.html och ta bort den äldsta. -->
+      <ul class="nyheter">
+        <li class="nyhet">
+          <time datetime="2026-10-15">[2026-10-15]</time>
+          <h3>[Rubrik på nyhet 3]</h3>
+          <p>[Kort sammanfattning av nyheten.]</p>
+        </li>
+        <li class="nyhet">
+          <time datetime="2026-09-20">[2026-09-20]</time>
+          <h3>[Rubrik på nyhet 2]</h3>
+          <p>[Kort sammanfattning av nyheten.]</p>
+        </li>
+        <li class="nyhet">
+          <time datetime="2026-08-25">[2026-08-25]</time>
+          <h3>[Rubrik på nyhet 1]</h3>
+          <p>[Kort sammanfattning av nyheten.]</p>
+        </li>
+      </ul>
+      <p class="mer"><a href="aktuellt.html">Alla nyheter →</a></p>
+    </div>
+  </main>
+
+  <!-- ===== SIDFOT (samma på alla sidor) ===== -->
+  <footer class="sidfot">
+    <div class="wrap">
+      <div>
+        <p><strong>BRF Hvilan</strong></p>
+        <p>[Gatuadress]<br>[Postnummer] Stockholm</p>
+        <p>Org.nr: [XXXXXX-XXXX]</p>
+      </div>
+      <div>
+        <p><strong>Kontakt</strong></p>
+        <p>Styrelsen: <a href="mailto:[styrelsen@exempel.se]">[styrelsen@exempel.se]</a></p>
+        <p>Felanmälan: [telefonnummer]</p>
+        <p><a href="kontakt.html">Alla kontaktuppgifter</a></p>
+      </div>
+      <div>
+        <p><strong>Snabblänkar</strong></p>
+        <p><a href="dokument.html">Stadgar och årsredovisningar</a></p>
+        <p><a href="maklare.html">Information för mäklare</a></p>
+        <p>Senast uppdaterad: [ÅÅÅÅ-MM-DD]</p>
+      </div>
+    </div>
+  </footer>
+  <!-- ===== SLUT SIDFOT ===== -->
+</body>
+</html>

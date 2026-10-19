@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BRF Hvilan – Aktuellt</title>
+  <meta name="description" content="Nyheter och information från styrelsen i BRF Hvilan.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="hoppa" href="#innehall">Hoppa till innehållet</a>
+
+  <!-- ===== SIDHUVUD (samma på alla sidor) ===== -->
+  <header class="sidhuvud">
+    <div class="wrap">
+      <a class="logga" href="index.html">BRF Hvilan</a>
+      <nav class="meny" aria-label="Huvudmeny">
+        <ul>
+          <li><a href="index.html">Start</a></li>
+          <li><a href="aktuellt.html" aria-current="page">Aktuellt</a></li>
+          <li><a href="maklare.html">För mäklare</a></li>
+          <li><a href="medlemmar.html">För medlemmar</a></li>
+          <li><a href="dokument.html">Dokument</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- ===== SLUT SIDHUVUD ===== -->
+
+  <main id="innehall">
+    <div class="wrap">
+      <h1>Aktuellt</h1>
+      <p class="ingress">Nyheter och information från styrelsen. Nyaste överst.</p>
+
+      <!--
+        LÄGG TILL EN NYHET:
+        1. Kopiera blocket mellan <li class="nyhet"> och </li> nedan.
+        2. Klistra in det ÖVERST i listan (direkt efter <ul class="nyheter">).
+        3. Ändra datum (både datetime="..." och texten), rubrik och text.
+        4. Uppdatera även "Senaste nytt" på index.html (de 3 senaste).
+      -->
+      <ul class="nyheter">
+        <li class="nyhet">
+          <time datetime="2026-10-15">[2026-10-15]</time>
+          <h2>[Rubrik på nyhet 3]</h2>
+          <p>[Text om nyheten. Skriv vad som gäller, när det gäller och vem man kontaktar vid frågor.]</p>
+        </li>
+        <li class="nyhet">
+          <time datetime="2026-09-20">[2026-09-20]</time>
+          <h2>[Rubrik på nyhet 2]</h2>
+          <p>[Text om nyheten.]</p>
+        </li>
+        <li class="nyhet">
+          <time datetime="2026-08-25">[2026-08-25]</time>
+          <h2>[Rubrik på nyhet 1]</h2>
+          <p>[Text om nyheten.]</p>
+        </li>
+      </ul>
+    </div>
+  </main>
+
+  <!-- ===== SIDFOT (samma på alla sidor) ===== -->
+  <footer class="sidfot">
+    <div class="wrap">
+      <div>
+        <p><strong>BRF Hvilan</strong></p>
+        <p>[Gatuadress]<br>[Postnummer] Stockholm</p>
+        <p>Org.nr: [XXXXXX-XXXX]</p>
+      </div>
+      <div>
+        <p><strong>Kontakt</strong></p>
+        <p>Styrelsen: <a href="mailto:[styrelsen@exempel.se]">[styrelsen@exempel.se]</a></p>
+        <p>Felanmälan: [telefonnummer]</p>
+        <p><a href="kontakt.html">Alla kontaktuppgifter</a></p>
+      </div>
+      <div>
+        <p><strong>Snabblänkar</strong></p>
+        <p><a href="dokument.html">Stadgar och årsredovisningar</a></p>
+        <p><a href="maklare.html">Information för mäklare</a></p>
+        <p>Senast uppdaterad: [ÅÅÅÅ-MM-DD]</p>
+      </div>
+    </div>
+  </footer>
+  <!-- ===== SLUT SIDFOT ===== -->
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BRF Hvilan – Dokument</title>
+  <meta name="description" content="Stadgar, årsredovisningar och energideklaration för BRF Hvilan.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="hoppa" href="#innehall">Hoppa till innehållet</a>
+
+  <!-- ===== SIDHUVUD (samma på alla sidor) ===== -->
+  <header class="sidhuvud">
+    <div class="wrap">
+      <a class="logga" href="index.html">BRF Hvilan</a>
+      <nav class="meny" aria-label="Huvudmeny">
+        <ul>
+          <li><a href="index.html">Start</a></li>
+          <li><a href="aktuellt.html">Aktuellt</a></li>
+          <li><a href="maklare.html">För mäklare</a></li>
+          <li><a href="medlemmar.html">För medlemmar</a></li>
+          <li><a href="dokument.html" aria-current="page">Dokument</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- ===== SLUT SIDHUVUD ===== -->
+
+  <main id="innehall">
+    <div class="wrap">
+      <h1>Dokument</h1>
+      <p class="ingress">Alla dokument öppnas som PDF. Saknar du något? Kontakta styrelsen.</p>
+
+      <!--
+        LÄGG TILL ETT DOKUMENT:
+        1. Lägg PDF-filen i mappen dokument/ (använd små bokstäver, inga mellanslag eller åäö i filnamnet).
+        2. Kopiera en <li>-rad nedan och ändra filnamn och text.
+      -->
+
+      <h2>Stadgar</h2>
+      <ul class="dokumentlista">
+        <li><a href="dokument/stadgar.pdf">Stadgar för BRF Hvilan (registrerade [ÅÅÅÅ-MM-DD]) <span class="typ">PDF</span></a></li>
+        <li><a href="dokument/ordningsregler.pdf">Ordningsregler <span class="typ">PDF</span></a></li>
+      </ul>
+
+      <h2>Årsredovisningar</h2>
+      <!-- Nyaste årsredovisningen överst. Ändra även länken på maklare.html. -->
+      <ul class="dokumentlista">
+        <li><a href="dokument/arsredovisning-[ÅÅÅÅ].pdf">Årsredovisning [ÅÅÅÅ] <span class="typ">PDF</span></a></li>
+        <li><a href="dokument/arsredovisning-[ÅÅÅÅ].pdf">Årsredovisning [ÅÅÅÅ] <span class="typ">PDF</span></a></li>
+        <li><a href="dokument/arsredovisning-[ÅÅÅÅ].pdf">Årsredovisning [ÅÅÅÅ] <span class="typ">PDF</span></a></li>
+      </ul>
+
+      <h2>Energideklaration</h2>
+      <ul class="dokumentlista">
+        <li><a href="dokument/energideklaration.pdf">Energideklaration (upprättad [ÅÅÅÅ], giltig till [ÅÅÅÅ]) <span class="typ">PDF</span></a></li>
+      </ul>
+
+      <h2>Blanketter</h2>
+      <ul class="dokumentlista">
+        <li><a href="dokument/ansokan-andrahandsuthyrning.pdf">[Ansökan om andrahandsuthyrning] <span class="typ">PDF</span></a></li>
+        <li><a href="dokument/ansokan-renovering.pdf">[Ansökan om ändring i lägenhet] <span class="typ">PDF</span></a></li>
+      </ul>
+    </div>
+  </main>
+
+  <!-- ===== SIDFOT (samma på alla sidor) ===== -->
+  <footer class="sidfot">
+    <div class="wrap">
+      <div>
+        <p><strong>BRF Hvilan</strong></p>
+        <p>[Gatuadress]<br>[Postnummer] Stockholm</p>
+        <p>Org.nr: [XXXXXX-XXXX]</p>
+      </div>
+      <div>
+        <p><strong>Kontakt</strong></p>
+        <p>Styrelsen: <a href="mailto:[styrelsen@exempel.se]">[styrelsen@exempel.se]</a></p>
+        <p>Felanmälan: [telefonnummer]</p>
+        <p><a href="kontakt.html">Alla kontaktuppgifter</a></p>
+      </div>
+      <div>
+        <p><strong>Snabblänkar</strong></p>
+        <p><a href="dokument.html">Stadgar och årsredovisningar</a></p>
+        <p><a href="maklare.html">Information för mäklare</a></p>
+        <p>Senast uppdaterad: [ÅÅÅÅ-MM-DD]</p>
+      </div>
+    </div>
+  </footer>
+  <!-- ===== SLUT SIDFOT ===== -->
+</body>
+</html>

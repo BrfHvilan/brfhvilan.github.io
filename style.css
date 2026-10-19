@@ -1,0 +1,513 @@
+/* ==========================================================
+   BRF Hvilan – gemensam stilmall för alla sidor
+   Färger ändras enklast i :root nedan.
+   ========================================================== */
+
+:root {
+  --gron: #2E5E4E;          /* huvudfärg */
+  --gron-mork: #234A3D;     /* hover/aktiv */
+  --gron-ljus: #EEF4F1;     /* ljus bakgrund för rutor */
+  --text: #222222;
+  --text-dampad: #5A5A5A;
+  --linje: #D9E2DE;
+  --bakgrund: #FFFFFF;
+  --max-bredd: 1000px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bakgrund);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.wrap {
+  max-width: var(--max-bredd);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--gron);
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--gron-mork);
+}
+
+a:focus-visible {
+  outline: 3px solid var(--gron);
+  outline-offset: 2px;
+}
+
+h1, h2, h3 {
+  line-height: 1.25;
+  color: var(--gron);
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 2rem 0 1rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin: 2.25rem 0 0.75rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.ingress {
+  font-size: 1.15rem;
+  color: var(--text-dampad);
+  margin-top: 0;
+}
+
+/* ---------- Skip-länk (tillgänglighet) ---------- */
+
+.hoppa {
+  position: absolute;
+  left: -9999px;
+}
+
+.hoppa:focus {
+  left: 1rem;
+  top: 1rem;
+  background: #fff;
+  padding: 0.5rem 1rem;
+  z-index: 10;
+}
+
+/* ---------- Sidhuvud och meny ---------- */
+
+.sidhuvud {
+  background: var(--gron);
+  color: #fff;
+}
+
+.sidhuvud .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+}
+
+.logga {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.01em;
+}
+
+.logga:hover {
+  color: #fff;
+}
+
+.meny ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.meny a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 4px;
+  font-size: 0.98rem;
+}
+
+.meny a:hover {
+  background: var(--gron-mork);
+  color: #fff;
+}
+
+.meny a[aria-current="page"] {
+  background: #fff;
+  color: var(--gron);
+  font-weight: 600;
+}
+
+.meny a:focus-visible {
+  outline-color: #fff;
+}
+
+/* ---------- Sidfot ---------- */
+
+.sidfot {
+  margin-top: 3rem;
+  border-top: 4px solid var(--gron);
+  background: var(--gron-ljus);
+  font-size: 0.95rem;
+}
+
+.sidfot .wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem 2rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.sidfot p {
+  margin: 0 0 0.25rem;
+}
+
+.sidfot strong {
+  color: var(--gron);
+}
+
+/* ---------- Startsida ---------- */
+
+.hero {
+  margin: 1.5rem 0 0;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--gron-ljus);
+}
+
+.hero img {
+  width: 100%;
+  aspect-ratio: 5 / 2;
+  object-fit: cover;
+}
+
+.hero figcaption {
+  font-size: 0.9rem;
+  color: var(--text-dampad);
+  padding: 0.5rem 0.75rem;
+}
+
+.genvagar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.genvagar a {
+  display: block;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--linje);
+  border-left: 4px solid var(--gron);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.genvagar a:hover {
+  background: var(--gron-ljus);
+}
+
+.genvagar strong {
+  display: block;
+  color: var(--gron);
+}
+
+/* ---------- Nyheter ---------- */
+
+.nyheter {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nyhet {
+  border-bottom: 1px solid var(--linje);
+  padding: 1.25rem 0;
+}
+
+.nyhet:first-child {
+  padding-top: 0.5rem;
+}
+
+.nyhet h3,
+.nyhet h2 {
+  margin: 0.15rem 0 0.4rem;
+  font-size: 1.15rem;
+}
+
+.nyhet time {
+  font-size: 0.9rem;
+  color: var(--text-dampad);
+}
+
+.nyhet p {
+  margin: 0.3rem 0 0;
+}
+
+.mer {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+/* ---------- Faktaruta (mäklare) ---------- */
+
+.faktaruta {
+  border: 2px solid var(--gron);
+  border-radius: 6px;
+  margin: 1.5rem 0;
+  overflow: hidden;
+}
+
+.faktaruta h2 {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  background: var(--gron);
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.faktaruta dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(180px, 38%) 1fr;
+}
+
+.faktaruta dt,
+.faktaruta dd {
+  margin: 0;
+  padding: 0.65rem 1rem;
+  border-top: 1px solid var(--linje);
+}
+
+.faktaruta dt {
+  font-weight: 600;
+  background: var(--gron-ljus);
+}
+
+.faktaruta dl > :nth-child(1),
+.faktaruta dl > :nth-child(2) {
+  border-top: 0;
+}
+
+.faktaruta ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+/* ---------- Tabeller ---------- */
+
+.tabell-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.5rem 0 1rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--linje);
+  vertical-align: top;
+}
+
+th {
+  background: var(--gron-ljus);
+  color: var(--gron);
+}
+
+/* ---------- Dokumentlista ---------- */
+
+.dokumentlista {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.dokumentlista li {
+  border-bottom: 1px solid var(--linje);
+}
+
+.dokumentlista a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0.25rem;
+  text-decoration: none;
+}
+
+.dokumentlista a:hover {
+  background: var(--gron-ljus);
+}
+
+.dokumentlista .typ {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--gron);
+  border-radius: 3px;
+  padding: 0.1rem 0.45rem;
+}
+
+/* ---------- Innehållsförteckning och rutor ---------- */
+
+.innehall {
+  background: var(--gron-ljus);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0 0;
+}
+
+.innehall ul {
+  margin: 0.25rem 0 0;
+  padding-left: 1.2rem;
+  columns: 2 200px;
+}
+
+.ruta {
+  background: var(--gron-ljus);
+  border-left: 4px solid var(--gron);
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+}
+
+.ruta p:first-child { margin-top: 0; }
+.ruta p:last-child { margin-bottom: 0; }
+
+.ruta.akut {
+  background: #FBEDEA;
+  border-left-color: #A33A2A;
+}
+
+.ruta.akut h2,
+.ruta.akut h3 {
+  color: #A33A2A;
+  margin-top: 0;
+}
+
+.kort {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.kort > div {
+  border: 1px solid var(--linje);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+}
+
+.kort h2,
+.kort h3 {
+  margin-top: 0;
+}
+
+.kort p {
+  margin: 0.3rem 0;
+}
+
+/* ---------- Vanliga frågor ---------- */
+
+details {
+  border-bottom: 1px solid var(--linje);
+  padding: 0.75rem 0;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--gron);
+}
+
+details[open] summary {
+  margin-bottom: 0.5rem;
+}
+
+/* ---------- Mobil ---------- */
+
+@media (max-width: 640px) {
+  body {
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    margin-top: 1.5rem;
+  }
+
+  .sidhuvud .wrap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .meny a {
+    padding: 0.45rem 0.6rem;
+  }
+
+  .faktaruta dl {
+    grid-template-columns: 1fr;
+  }
+
+  .faktaruta dd {
+    border-top: 0;
+    padding-top: 0.25rem;
+  }
+
+  .hero img {
+    aspect-ratio: 3 / 2;
+  }
+}
+
+/* ---------- Utskrift ---------- */
+
+@media print {
+  .sidhuvud .meny,
+  .hoppa {
+    display: none;
+  }
+
+  .sidhuvud {
+    background: none;
+    color: var(--text);
+  }
+
+  .logga {
+    color: var(--text);
+  }
+}
