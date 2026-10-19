@@ -196,33 +196,23 @@ h3 {
 
 /* ---------- Startsida ---------- */
 
-/* Text och bild sida vid sida; bilden i naturlig storlek, aldrig beskuren eller förstorad.
-   I mobilen hamnar bilden ovanför texten (se mobilavsnittet längst ner). */
-.om {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-areas: "text bild";
-  gap: 1.5rem 2.5rem;
-  align-items: start;
-}
-
-.om-text {
-  grid-area: text;
-}
-
-.om-bild {
-  grid-area: bild;
-  margin: 0;
-}
-
-.om-bild img {
+.hero {
+  margin: 1.5rem 0 0;
   border-radius: 6px;
+  overflow: hidden;
+  background: var(--gron-ljus);
 }
 
-.om-bild figcaption {
+.hero img {
+  width: 100%;
+  aspect-ratio: 5 / 2;
+  object-fit: cover;
+}
+
+.hero figcaption {
   font-size: 0.9rem;
   color: var(--text-dampad);
-  margin-top: 0.4rem;
+  padding: 0.5rem 0.75rem;
 }
 
 .genvagar {
@@ -395,17 +385,89 @@ th {
 
 /* ---------- Innehållsförteckning och rutor ---------- */
 
-.innehall {
+/* Ankarlänkar landar med lite luft ovanför rubriken */
+[id] {
+  scroll-margin-top: 1rem;
+}
+
+.meta {
+  font-size: 0.95rem;
+  color: var(--text-dampad);
+}
+
+.innehallsforteckning {
   background: var(--gron-ljus);
   border-radius: 6px;
   padding: 1rem 1.25rem;
-  margin: 1rem 0 0;
+  margin: 1.5rem 0 2rem;
 }
 
-.innehall ul {
-  margin: 0.25rem 0 0;
+.innehallsforteckning h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.innehallsforteckning ul {
+  margin: 0;
   padding-left: 1.2rem;
-  columns: 2 200px;
+}
+
+.innehallsforteckning li {
+  margin: 0.35rem 0;
+  color: var(--text-dampad);
+  font-size: 0.95rem;
+}
+
+.innehallsforteckning a {
+  font-weight: 600;
+  font-size: 1.0625rem;
+}
+
+/* "Kontakt och akuta ärenden" på För medlemmar */
+.akutruta {
+  background: var(--gron-ljus);
+  border: 2px solid var(--gron);
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.akutruta h2 {
+  margin-top: 0;
+}
+
+.akutruta h3 {
+  margin-top: 1.25rem;
+}
+
+.akutruta dl {
+  margin: 0.5rem 0 1rem;
+  display: grid;
+  grid-template-columns: minmax(150px, 28%) 1fr;
+  background: #fff;
+  border: 1px solid var(--linje);
+  border-radius: 4px;
+}
+
+.akutruta dt,
+.akutruta dd {
+  margin: 0;
+  padding: 0.65rem 1rem;
+  border-top: 1px solid var(--linje);
+}
+
+.akutruta dt {
+  font-weight: 600;
+  color: var(--gron);
+}
+
+.akutruta dl > :nth-child(1),
+.akutruta dl > :nth-child(2) {
+  border-top: 0;
+}
+
+.akutruta p:last-child {
+  margin-bottom: 0;
 }
 
 .ruta {
@@ -499,15 +561,22 @@ details[open] summary {
     padding-top: 0.25rem;
   }
 
-}
 
-/* Bild ovanför texten när det inte finns plats för båda bredvid varandra */
-@media (max-width: 760px) {
-  .om {
+  .hero img {
+    aspect-ratio: 3 / 2;
+  }
+
+  .akutruta dl {
     grid-template-columns: 1fr;
-    grid-template-areas:
-      "bild"
-      "text";
+  }
+
+  .akutruta dd {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .akutruta dt {
+    padding-bottom: 0.15rem;
   }
 }
 
