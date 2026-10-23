@@ -478,7 +478,28 @@ th {
   margin: 1rem 0;
 }
 
+.ruta:not(.akut) h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+}
+
 .ruta p:first-child { margin-top: 0; }
+
+/* Knapplänk, t.ex. till Facebookgruppen på startsidan */
+.knapp {
+  display: inline-block;
+  background: var(--gron);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.55rem 1.1rem;
+  border-radius: 4px;
+}
+
+.knapp:hover {
+  background: var(--gron-mork);
+  color: #fff;
+}
 .ruta p:last-child { margin-bottom: 0; }
 
 .ruta.akut {
