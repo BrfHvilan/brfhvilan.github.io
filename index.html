@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="sv" data-startsida="sv" data-annan-startsida="en/index.html">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BRF Hvilan – Start</title>
   <meta name="description" content="Bostadsrättsföreningen Hvilan i Stockholm – information för medlemmar och mäklare.">
   <link rel="stylesheet" href="style.css">
+  <script src="sprak.js"></script>
 </head>
 <body>
   <a class="hoppa" href="#innehall">Hoppa till innehållet</a>
@@ -24,12 +25,50 @@
           <li><a href="kontakt.html">Kontakt</a></li>
         </ul>
       </nav>
+      <nav class="sprakvaxlare" aria-label="Språk / Language">
+        <span aria-current="true" lang="sv">SV</span>
+        <span aria-hidden="true">|</span>
+        <a href="en/index.html" lang="en" hreflang="en" data-lang="en" aria-label="English – read this page in English">EN</a>
+      </nav>
     </div>
   </header>
   <!-- ===== SLUT SIDHUVUD ===== -->
 
   <main id="innehall">
     <div class="wrap">
+      <!-- SPRÅKVAL: samma ruta finns på en/index.html med omvända roller – håll dem synkade. -->
+      <section class="sprakval" aria-labelledby="sprakval-rubrik">
+        <h2 id="sprakval-rubrik" class="sprakval-rubrik">Välj språk</h2>
+        <div class="sprakknappar">
+          <a class="sprakknapp" href="index.html" aria-current="page" data-lang="sv" lang="sv" hreflang="sv" aria-label="Svenska – läs sidan på svenska">
+            <span class="flagga-ruta">
+              <svg class="flagga" width="64" height="40" viewBox="0 0 16 10" aria-hidden="true" focusable="false">
+                <rect width="16" height="10" fill="#006AA7"/>
+                <rect x="5" width="2" height="10" fill="#FECC02"/>
+                <rect y="4" width="16" height="2" fill="#FECC02"/>
+              </svg>
+            </span>
+            <span>Svenska</span>
+          </a>
+          <a class="sprakknapp" href="en/index.html" data-lang="en" lang="en" hreflang="en" aria-label="English – read this site in English">
+            <span class="flagga-ruta">
+              <svg class="flagga" width="64" height="32" viewBox="0 0 60 30" aria-hidden="true" focusable="false">
+                <clipPath id="uk-ram"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
+                <clipPath id="uk-diagonal"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>
+                <g clip-path="url(#uk-ram)">
+                  <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+                  <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+                  <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#uk-diagonal)" stroke="#C8102E" stroke-width="4"/>
+                  <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+                  <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+                </g>
+              </svg>
+            </span>
+            <span>English</span>
+          </a>
+        </div>
+      </section>
+
       <h1>Välkommen till BRF Hvilan</h1>
       <p class="ingress">
         Bostadsrättsföreningen Hvilan äger och förvaltar fastigheterna Vilan 16 och Vilan 17
