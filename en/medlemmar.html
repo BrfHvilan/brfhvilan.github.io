@@ -7,6 +7,7 @@
   <meta name="description" content="Responsibilities, services, laundry room and communication for members of BRF Hvilan.">
   <link rel="stylesheet" href="../style.css">
   <script src="../sprak.js"></script>
+  <script src="../arbetsgrupp.js" defer></script>
 </head>
 <body>
   <a class="hoppa" href="#innehall">Skip to content</a>
@@ -50,7 +51,7 @@
           <li><a href="#kontakt-akut">Contact and emergencies</a> – the board, technical manager, lift, fire</li>
           <li><a href="#ansvar">Members' responsibilities</a> – renovation, subletting, selling, faults in the apartment, burglary, lift, waste, water shut-off</li>
           <li><a href="#tjanster">Services and facilities</a> – electricity, internet, ventilation, laundry room, defibrillator, courtyard, storage, balcony, bicycles, fire, pests, stairwells, name plates, balcony screens, barbecues, ladders</li>
-          <li><a href="#kommunikation">Communication and guidelines</a> – clean-up days, Facebook group, keys and door code, insurance, energy, general meeting</li>
+          <li><a href="#kommunikation">Communication and guidelines</a> – clean-up days, working groups, Facebook group, keys and door code, insurance, energy, general meeting</li>
         </ul>
       </nav>
 
@@ -189,6 +190,41 @@
 
         <h3 id="staddagar">Clean-up days and shared activities</h3>
         <p>The cooperative holds a clean-up day twice a year, once in the spring and once in the autumn. Dates are announced in the Facebook group and on the notice boards.</p>
+
+        <h3 id="arbetsgrupper">Working groups</h3>
+        <p>At the 2026 annual general meeting, we discussed our shared responsibility for the property we own together. The board does not have time to act as caretakers alongside its regular board work, and for the finances to add up we members need to do more ourselves. The board has therefore decided that all members should belong to one of the following working groups.</p>
+        <p><strong>Property group.</strong> The aim is to keep the property in good condition and to spot and fix minor faults early. The group keeps an eye on shared spaces such as stairwells, lifts, the basement, basement corridors and the laundry room, deals with minor faults and defects itself, and passes larger problems and suggestions on to the board for a decision.</p>
+        <p><strong>Garden and outdoor group.</strong> The aim is to develop and look after the cooperative's outdoor environment. The group is responsible for planting and basic gardening and organises the spring and autumn clean-up days.</p>
+        <p><strong>Recycling and environment group.</strong> The aim is to keep things tidy and improve sustainability. The group keeps the waste room organised, provides information about sorting, identifies improvements and proposes them to the board, and organises the summer barbecue.</p>
+        <p>You tell the board which group you have chosen using the form below, and the board will arrange the rest. Each group communicates in its own WhatsApp group, and the group's contact person will add you once you have signed up. If you have any questions, email <a href="mailto:styrelsenhvilan@gmail.com">styrelsenhvilan@gmail.com</a>.</p>
+        <!-- Working group form: same on index.html and medlemmar.html (and the Swedish versions). Logic in ../arbetsgrupp.js; nothing is sent or stored by the website. -->
+        <form class="formular" data-arbetsgrupp-formular novalidate>
+          <div>
+            <label for="ag-namn">Name <span class="obligatorisk">(required)</span></label>
+            <input type="text" id="ag-namn" name="namn" autocomplete="name" required aria-describedby="ag-namn-fel">
+            <p class="felmeddelande" id="ag-namn-fel" data-fel="namn" hidden></p>
+          </div>
+          <div>
+            <label for="ag-lagenhet">Apartment number</label>
+            <input type="text" id="ag-lagenhet" name="lagenhet">
+          </div>
+          <fieldset aria-describedby="ag-grupp-fel">
+            <legend>Working group <span class="obligatorisk">(required)</span></legend>
+            <label class="radio"><input type="radio" name="grupp" value="Property group" required> Property group</label>
+            <label class="radio"><input type="radio" name="grupp" value="Garden and outdoor group"> Garden and outdoor group</label>
+            <label class="radio"><input type="radio" name="grupp" value="Recycling and environment group"> Recycling and environment group</label>
+            <p class="felmeddelande" id="ag-grupp-fel" data-fel="grupp" hidden></p>
+          </fieldset>
+          <div>
+            <label for="ag-meddelande">Message to the board <span class="valfritt">(optional)</span></label>
+            <textarea id="ag-meddelande" name="meddelande" rows="3"></textarea>
+          </div>
+          <div>
+            <button type="submit" class="knapp">Send to the board</button>
+          </div>
+          <p class="formular-status" role="status" aria-live="polite"></p>
+        </form>
+        <p class="reservtext">Button not working? Email <a href="mailto:styrelsenhvilan@gmail.com">styrelsenhvilan@gmail.com</a> instead, and tell us which group you would like to join, your name and your apartment number.</p>
 
         <h3 id="kanaler">How we communicate</h3>
         <p>The cooperative informs members by email and through notices in the stairwells; notices of meetings and other formal communications are given in the manner set out in the statutes. In addition, there is the cooperative's Facebook group Brf Hvilan, where everyday questions are asked and answered and where informal communication takes place. We recommend that all members join, but it is voluntary. <a href="https://www.facebook.com/groups/791767655003837" rel="noopener" target="_blank">Join the group</a></p>

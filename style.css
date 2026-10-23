@@ -632,6 +632,119 @@ th {
   margin: 0.3rem 0;
 }
 
+/* ---------- Formulär (arbetsgrupper) ---------- */
+
+.formular {
+  display: grid;
+  gap: 1rem;
+  max-width: 36rem;
+  margin: 1rem 0 0.75rem;
+}
+
+.formular label,
+.formular legend {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.formular .valfritt,
+.formular .obligatorisk {
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--text-dampad);
+}
+
+.formular input[type="text"],
+.formular textarea {
+  display: block;
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  font: inherit;
+  color: var(--text);
+  background: #fff;
+  border: 1px solid #8AA59B;
+  border-radius: 4px;
+}
+
+.formular textarea {
+  resize: vertical;
+}
+
+.formular input:focus-visible,
+.formular textarea:focus-visible {
+  outline: 3px solid var(--gron);
+  outline-offset: 1px;
+}
+
+.formular fieldset {
+  margin: 0;
+  padding: 0.6rem 1rem 0.75rem;
+  background: #fff;
+  border: 1px solid #8AA59B;
+  border-radius: 4px;
+}
+
+.formular legend {
+  padding: 0 0.25rem;
+}
+
+.formular .radio {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0.35rem 0;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.formular .radio input {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0;
+  flex-shrink: 0;
+  accent-color: var(--gron);
+}
+
+.formular [aria-invalid="true"] {
+  border-color: #A33A2A;
+  border-width: 2px;
+}
+
+.felmeddelande {
+  margin: 0.35rem 0 0;
+  color: #A33A2A;
+  font-weight: 600;
+}
+
+.formular-status:empty {
+  display: none;
+}
+
+.formular-status {
+  margin: 0;
+  font-weight: 600;
+  color: var(--gron);
+}
+
+button.knapp {
+  border: 0;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button.knapp:focus-visible {
+  outline: 3px solid var(--gron);
+  outline-offset: 2px;
+}
+
+.reservtext {
+  font-size: 0.95rem;
+  color: var(--text-dampad);
+}
+
 /* ---------- Vanliga frågor ---------- */
 
 details {

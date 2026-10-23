@@ -7,6 +7,7 @@
   <meta name="description" content="Bostadsrättsföreningen Hvilan i Stockholm – information för medlemmar och mäklare.">
   <link rel="stylesheet" href="style.css">
   <script src="sprak.js"></script>
+  <script src="arbetsgrupp.js" defer></script>
 </head>
 <body>
   <a class="hoppa" href="#innehall">Hoppa till innehållet</a>
@@ -86,6 +87,50 @@
         <p>
           <a class="knapp" href="https://www.facebook.com/groups/791767655003837" rel="noopener" target="_blank">Gå med i gruppen Brf Hvilan</a>
         </p>
+      </section>
+
+      <section class="ruta" aria-labelledby="arbetsgrupper-rubrik">
+        <h2 id="arbetsgrupper-rubrik">Arbetsgrupper – vi sköter huset tillsammans</h2>
+        <p>
+          Vid årsstämman 2026 diskuterades vårt gemensamma ansvar för fastigheten. Styrelsen hinner
+          inte vara vaktmästare vid sidan av styrelsearbetet, och för att hålla nere kostnaderna
+          behöver vi medlemmar göra mer själva. Styrelsen har därför beslutat att alla medlemmar ska
+          ingå i en av tre arbetsgrupper: Fastighetsgruppen, som ser till de gemensamma utrymmena och
+          tar hand om mindre fel; Trädgårds- och utemiljögruppen, som sköter gården och ordnar
+          städdagarna; och Återvinnings- och miljögruppen, som håller ordning i sopgången och arbetar
+          med sortering och hållbarhet. Som ny medlem anmäler du ditt val till styrelsen via
+          formuläret nedan, så ordnar styrelsen resten och gruppens kontaktperson lägger till dig i
+          gruppens WhatsApp.
+        </p>
+        <!-- Formulär för arbetsgrupp: samma på index.html och medlemmar.html (och de engelska motsvarigheterna). Logiken finns i arbetsgrupp.js; inget skickas eller sparas från sajten. -->
+        <form class="formular" data-arbetsgrupp-formular novalidate>
+          <div>
+            <label for="ag-namn">Namn <span class="obligatorisk">(obligatoriskt)</span></label>
+            <input type="text" id="ag-namn" name="namn" autocomplete="name" required aria-describedby="ag-namn-fel">
+            <p class="felmeddelande" id="ag-namn-fel" data-fel="namn" hidden></p>
+          </div>
+          <div>
+            <label for="ag-lagenhet">Lägenhetsnummer</label>
+            <input type="text" id="ag-lagenhet" name="lagenhet">
+          </div>
+          <fieldset aria-describedby="ag-grupp-fel">
+            <legend>Arbetsgrupp <span class="obligatorisk">(obligatoriskt)</span></legend>
+            <label class="radio"><input type="radio" name="grupp" value="Fastighetsgruppen" required> Fastighetsgruppen</label>
+            <label class="radio"><input type="radio" name="grupp" value="Trädgårds- och utemiljögruppen"> Trädgårds- och utemiljögruppen</label>
+            <label class="radio"><input type="radio" name="grupp" value="Återvinnings- och miljögruppen"> Återvinnings- och miljögruppen</label>
+            <p class="felmeddelande" id="ag-grupp-fel" data-fel="grupp" hidden></p>
+          </fieldset>
+          <div>
+            <label for="ag-meddelande">Meddelande till styrelsen <span class="valfritt">(valfritt)</span></label>
+            <textarea id="ag-meddelande" name="meddelande" rows="3"></textarea>
+          </div>
+          <div>
+            <button type="submit" class="knapp">Skicka till styrelsen</button>
+          </div>
+          <p class="formular-status" role="status" aria-live="polite"></p>
+        </form>
+        <p class="reservtext">Fungerar inte knappen? Mejla i stället <a href="mailto:styrelsenhvilan@gmail.com">styrelsenhvilan@gmail.com</a> och skriv vilken grupp du vill ingå i, ditt namn och ditt lägenhetsnummer.</p>
+        <p><a href="medlemmar.html#arbetsgrupper">Läs mer om arbetsgrupperna</a></p>
       </section>
 
       <figure class="hero">

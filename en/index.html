@@ -7,6 +7,7 @@
   <meta name="description" content="The housing cooperative BRF Hvilan in Stockholm – information for members and estate agents.">
   <link rel="stylesheet" href="../style.css">
   <script src="../sprak.js"></script>
+  <script src="../arbetsgrupp.js" defer></script>
 </head>
 <body>
   <a class="hoppa" href="#innehall">Skip to content</a>
@@ -87,6 +88,50 @@
         <p>
           <a class="knapp" href="https://www.facebook.com/groups/791767655003837" rel="noopener" target="_blank">Join the Brf Hvilan group</a>
         </p>
+      </section>
+
+      <section class="ruta" aria-labelledby="arbetsgrupper-rubrik">
+        <h2 id="arbetsgrupper-rubrik">Working groups – we look after the building together</h2>
+        <p>
+          At the 2026 annual general meeting, we discussed our shared responsibility for the property.
+          The board does not have time to act as caretakers alongside its board work, and to keep costs
+          down we members need to do more ourselves. The board has therefore decided that all members
+          should belong to one of three working groups: the Property group, which keeps an eye on the
+          shared spaces and deals with minor faults; the Garden and outdoor group, which looks after the
+          courtyard and organises the clean-up days; and the Recycling and environment group, which keeps
+          the waste room in order and works on sorting and sustainability. As a new member, you tell the
+          board which group you have chosen using the form below; the board will arrange the rest, and
+          the group's contact person will add you to the group's WhatsApp.
+        </p>
+        <!-- Working group form: same on index.html and medlemmar.html (and the Swedish versions). Logic in ../arbetsgrupp.js; nothing is sent or stored by the website. -->
+        <form class="formular" data-arbetsgrupp-formular novalidate>
+          <div>
+            <label for="ag-namn">Name <span class="obligatorisk">(required)</span></label>
+            <input type="text" id="ag-namn" name="namn" autocomplete="name" required aria-describedby="ag-namn-fel">
+            <p class="felmeddelande" id="ag-namn-fel" data-fel="namn" hidden></p>
+          </div>
+          <div>
+            <label for="ag-lagenhet">Apartment number</label>
+            <input type="text" id="ag-lagenhet" name="lagenhet">
+          </div>
+          <fieldset aria-describedby="ag-grupp-fel">
+            <legend>Working group <span class="obligatorisk">(required)</span></legend>
+            <label class="radio"><input type="radio" name="grupp" value="Property group" required> Property group</label>
+            <label class="radio"><input type="radio" name="grupp" value="Garden and outdoor group"> Garden and outdoor group</label>
+            <label class="radio"><input type="radio" name="grupp" value="Recycling and environment group"> Recycling and environment group</label>
+            <p class="felmeddelande" id="ag-grupp-fel" data-fel="grupp" hidden></p>
+          </fieldset>
+          <div>
+            <label for="ag-meddelande">Message to the board <span class="valfritt">(optional)</span></label>
+            <textarea id="ag-meddelande" name="meddelande" rows="3"></textarea>
+          </div>
+          <div>
+            <button type="submit" class="knapp">Send to the board</button>
+          </div>
+          <p class="formular-status" role="status" aria-live="polite"></p>
+        </form>
+        <p class="reservtext">Button not working? Email <a href="mailto:styrelsenhvilan@gmail.com">styrelsenhvilan@gmail.com</a> instead, and tell us which group you would like to join, your name and your apartment number.</p>
+        <p><a href="medlemmar.html#arbetsgrupper">Read more about the working groups</a></p>
       </section>
 
       <figure class="hero">

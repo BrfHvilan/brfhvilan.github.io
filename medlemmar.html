@@ -7,6 +7,7 @@
   <meta name="description" content="Trivselregler, felanmälan, tvättstuga, sopsortering, parkering och vanliga frågor för medlemmar i BRF Hvilan.">
   <link rel="stylesheet" href="style.css">
   <script src="sprak.js"></script>
+  <script src="arbetsgrupp.js" defer></script>
 </head>
 <body>
   <a class="hoppa" href="#innehall">Hoppa till innehållet</a>
@@ -50,7 +51,7 @@
           <li><a href="#kontakt-akut">Kontakt och akuta ärenden</a></li>
           <li><a href="#ansvar">Medlemmarnas ansvar</a> – renovering, andrahandsuthyrning, försäljning, fel i lägenheten, inbrott, hiss, sopor, vattenavstängning</li>
           <li><a href="#tjanster">Tjänster och faciliteter</a> – el, internet, ventilation, tvättstuga, hjärtstartare, innergård, förråd, balkong, cyklar, brand, skadedjur, trapphus, namnskylt, balkongskydd, grill, stege</li>
-          <li><a href="#kommunikation">Kommunikation och riktlinjer</a> – städdagar, Facebookgrupp, nycklar och portkod, försäkring, energi, stämma</li>
+          <li><a href="#kommunikation">Kommunikation och riktlinjer</a> – städdagar, arbetsgrupper, Facebookgrupp, nycklar och portkod, försäkring, energi, stämma</li>
         </ul>
       </nav>
 
@@ -189,6 +190,41 @@
 
         <h3 id="staddagar">Städdagar och gemensamma aktiviteter</h3>
         <p>Föreningen har städdag två gånger per år, en på våren och en på hösten. Datum meddelas i Facebookgruppen och på anslagstavlorna.</p>
+
+        <h3 id="arbetsgrupper">Arbetsgrupper</h3>
+        <p>Vid årsstämman 2026 diskuterades det gemensamma ansvaret för fastigheten vi äger tillsammans. Styrelsen hinner inte agera vaktmästare vid sidan av det ordinarie styrelsearbetet, och för att ekonomin ska gå ihop behöver vi medlemmar göra mer själva. Styrelsen har därför beslutat att alla medlemmar ska ingå i en av följande arbetsgrupper.</p>
+        <p><strong>Fastighetsgruppen.</strong> Syftet är att fastigheten hålls i gott skick och att mindre fel upptäcks tidigt och åtgärdas. Gruppen har tillsyn över gemensamma utrymmen som trapphus, hissar, källare, källargångar och tvättstuga, tar hand om mindre fel och brister på egen hand och skickar större problem och förslag vidare till styrelsen för beslut.</p>
+        <p><strong>Trädgårds- och utemiljögruppen.</strong> Syftet är att utveckla och sköta föreningens utemiljö. Gruppen ansvarar för plantering och enklare trädgårdsskötsel och organiserar vår- och höststädningen.</p>
+        <p><strong>Återvinnings- och miljögruppen.</strong> Syftet är att skapa ordning och förbättra hållbarheten. Gruppen håller struktur i sopgången, informerar om sortering, identifierar förbättringar och föreslår dem för styrelsen, och anordnar sommargrillningen.</p>
+        <p>Du anmäler ditt val till styrelsen via formuläret nedan, så ordnar styrelsen resten. Varje grupp kommunicerar i en egen WhatsApp-grupp, och gruppens kontaktperson lägger till dig när du har anmält dig. Har du frågor, mejla <a href="mailto:styrelsenhvilan@gmail.com">styrelsenhvilan@gmail.com</a>.</p>
+        <!-- Formulär för arbetsgrupp: samma på index.html och medlemmar.html (och de engelska motsvarigheterna). Logiken finns i arbetsgrupp.js; inget skickas eller sparas från sajten. -->
+        <form class="formular" data-arbetsgrupp-formular novalidate>
+          <div>
+            <label for="ag-namn">Namn <span class="obligatorisk">(obligatoriskt)</span></label>
+            <input type="text" id="ag-namn" name="namn" autocomplete="name" required aria-describedby="ag-namn-fel">
+            <p class="felmeddelande" id="ag-namn-fel" data-fel="namn" hidden></p>
+          </div>
+          <div>
+            <label for="ag-lagenhet">Lägenhetsnummer</label>
+            <input type="text" id="ag-lagenhet" name="lagenhet">
+          </div>
+          <fieldset aria-describedby="ag-grupp-fel">
+            <legend>Arbetsgrupp <span class="obligatorisk">(obligatoriskt)</span></legend>
+            <label class="radio"><input type="radio" name="grupp" value="Fastighetsgruppen" required> Fastighetsgruppen</label>
+            <label class="radio"><input type="radio" name="grupp" value="Trädgårds- och utemiljögruppen"> Trädgårds- och utemiljögruppen</label>
+            <label class="radio"><input type="radio" name="grupp" value="Återvinnings- och miljögruppen"> Återvinnings- och miljögruppen</label>
+            <p class="felmeddelande" id="ag-grupp-fel" data-fel="grupp" hidden></p>
+          </fieldset>
+          <div>
+            <label for="ag-meddelande">Meddelande till styrelsen <span class="valfritt">(valfritt)</span></label>
+            <textarea id="ag-meddelande" name="meddelande" rows="3"></textarea>
+          </div>
+          <div>
+            <button type="submit" class="knapp">Skicka till styrelsen</button>
+          </div>
+          <p class="formular-status" role="status" aria-live="polite"></p>
+        </form>
+        <p class="reservtext">Fungerar inte knappen? Mejla i stället <a href="mailto:styrelsenhvilan@gmail.com">styrelsenhvilan@gmail.com</a> och skriv vilken grupp du vill ingå i, ditt namn och ditt lägenhetsnummer.</p>
 
         <h3 id="kanaler">Så kommunicerar vi</h3>
         <p>Föreningen informerar medlemmarna via e-post och anslag i trapphusen; kallelser och andra formella meddelanden lämnas på det sätt stadgarna anger. Som komplement finns föreningens Facebookgrupp Brf Hvilan, där vardagsfrågor ställs och besvaras och där den informella kommunikationen sker. Vi rekommenderar alla medlemmar att gå med, men det är frivilligt. <a href="https://www.facebook.com/groups/791767655003837" rel="noopener" target="_blank">Gå med i gruppen</a></p>
