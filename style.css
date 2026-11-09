@@ -159,7 +159,7 @@ h3 {
   color: #fff;
 }
 
-.meny a[aria-current="page"] {
+.meny a[aria-current] {
   background: #fff;
   color: var(--gron);
   font-weight: 600;
@@ -675,6 +675,71 @@ summary {
 
 details[open] summary {
   margin-bottom: 0.5rem;
+}
+
+/* ---------- Ritningar (ritningar-vilan-16.html och -17.html) ---------- */
+
+.ritningskategori {
+  padding: 0.5rem 0 1rem;
+}
+
+.ritningskategori summary h2 {
+  display: inline;
+  margin: 0;
+}
+
+.ritningskategori .antal {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-dampad);
+}
+
+.ritningar {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.ritning {
+  border: 1px solid var(--linje);
+  border-radius: 4px;
+  padding: 0.75rem;
+  background: #fff;
+}
+
+.ritning img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--linje);
+}
+
+.ritning p {
+  margin: 0.4rem 0 0;
+}
+
+.ritning-titel {
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.ritning-meta {
+  font-size: 0.85rem;
+  color: var(--text-dampad);
+}
+
+.ritning-lankar {
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.ritning-not {
+  color: var(--text-dampad);
 }
 
 /* ---------- Mobil ---------- */
