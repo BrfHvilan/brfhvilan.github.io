@@ -832,6 +832,47 @@ html[data-startsida] main {
   margin: var(--s5) 0 0;
 }
 
+/* Nyckeltal under knapparna */
+.nyckeltal {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 680px;
+  margin-top: var(--s6);
+  padding-top: var(--s4);
+  border-top: 1px solid #2C2C2E;
+}
+
+.nyckeltal > div {
+  display: flex;
+  flex-direction: column;
+  padding-right: var(--s5);
+  margin-right: var(--s5);
+  border-right: 1px solid #2C2C2E;
+}
+
+.nyckeltal > div:last-child {
+  border-right: 0;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.nyckeltal-tal {
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: #FFFFFF;
+  font-variant-numeric: tabular-nums;
+}
+
+.nyckeltal-text {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #AEAEB2;
+  margin-top: 8px;
+}
+
 .startbild .knapp-sekundar {
   color: #FFFFFF;
   border-color: #3A3A3C;
@@ -1278,6 +1319,24 @@ main:has(.ritningskategori) h1 {
 
   .startbild-knappar .knapp {
     width: 100%;
+  }
+
+  .nyckeltal {
+    flex-wrap: nowrap;
+    margin-top: var(--s5);
+  }
+
+  .nyckeltal > div {
+    padding-right: var(--s3);
+    margin-right: var(--s3);
+  }
+
+  .nyckeltal-tal {
+    font-size: 28px;
+  }
+
+  .nyckeltal-text {
+    font-size: 12px;
   }
 }
 
