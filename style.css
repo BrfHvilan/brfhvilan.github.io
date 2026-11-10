@@ -23,16 +23,20 @@
 
 :root {
   /* Färger */
-  --gron: #2E5E4E;          /* identitetsfärg: rubriker, länkar, sidhuvud */
-  --gron-mork: #234A3D;     /* hover/aktiv */
-  --gron-ljus: #E7EFEA;     /* ljusa ytor, hover, rutor */
-  --gron-ljusare: #F1F5F2;  /* mycket ljus yta */
-  --accent: #B5675A;        /* dämpad terrakotta (husets rosa fasad) – bara dekor */
-  --accent-text: #94473C;   /* accent som klarar textkontrast */
-  --text: #2B2E2C;          /* mörkgrå i stället för svart */
-  --text-dampad: #5C625F;
-  --linje: #E3DDD3;         /* varm grå */
-  --bakgrund: #FAF7F2;      /* varm off-white */
+  /* AIK-tema: svart identitetsfärg och gul accent. Gult klarar inte textkontrast
+     på ljus bakgrund – använd det som yta (med svart text) eller som text på svart. */
+  --primar: #141414;        /* identitetsfärg: rubriker, länkar, sidhuvud, sidfot */
+  --primar-mork: #000000;   /* hover/aktiv */
+  --primar-ljus: #FFF4C2;   /* ljus gul yta: rutor, ikoner, etiketter */
+  --yta-tonad: #F4F2EC;     /* neutral ljus yta (faktaruta) */
+  --gul: #FFD100;           /* AIK-gult: aktiv sida, knapp-hover, kanter, markeringar */
+  --gul-kant: #E6BC00;      /* kant runt gula ytor */
+  --accent: #FFD100;        /* dekor: kantlinjer och listpunkter */
+  --accent-text: #6E5600;   /* mörk guld som klarar textkontrast (datum) */
+  --text: #1C1C1C;
+  --text-dampad: #555555;
+  --linje: #E2DFD6;         /* varm grå */
+  --bakgrund: #FAF9F6;      /* ljus off-white */
   --yta: #FFFFFF;           /* kort och rader */
   --akut: #A33A2A;
   --akut-ljus: #FBEDEA;
@@ -116,7 +120,7 @@ main ol:not([class]) {
 }
 
 a {
-  color: var(--gron);
+  color: var(--primar);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
   transition: color var(--overgang), background-color var(--overgang),
@@ -124,14 +128,14 @@ a {
 }
 
 a:hover {
-  color: var(--gron-mork);
+  color: var(--primar-mork);
   text-decoration-thickness: 2px;
 }
 
 a:focus-visible,
 button:focus-visible,
 summary:focus-visible {
-  outline: 3px solid var(--gron);
+  outline: 3px solid var(--primar);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -146,7 +150,7 @@ h1, h2, h3 {
   font-family: var(--font-rubrik);
   font-weight: 600;
   line-height: 1.2;
-  color: var(--gron);
+  color: var(--primar);
   letter-spacing: -0.005em;
   text-wrap: balance;
 }
@@ -195,7 +199,7 @@ h2 + h3 {
   left: var(--s-3);
   top: var(--s-3);
   background: var(--yta);
-  color: var(--gron);
+  color: var(--primar);
   padding: var(--s-2) var(--s-3);
   border-radius: var(--radie-liten);
   box-shadow: var(--skugga-hover);
@@ -205,7 +209,7 @@ h2 + h3 {
 /* ---------- Sidhuvud och meny ---------- */
 
 .sidhuvud {
-  background: var(--gron);
+  background: var(--primar);
   color: #fff;
   position: sticky;
   top: 0;
@@ -224,7 +228,7 @@ h2 + h3 {
 }
 
 .logga {
-  color: #fff;
+  color: var(--gul);
   text-decoration: none;
   font-family: var(--font-rubrik);
   font-weight: 600;
@@ -234,12 +238,12 @@ h2 + h3 {
 }
 
 .logga:hover {
-  color: #fff;
+  color: var(--gul);
 }
 
 .sidhuvud a:focus-visible,
 .sidhuvud button:focus-visible {
-  outline-color: #fff;
+  outline-color: var(--gul);
 }
 
 .meny ul {
@@ -267,8 +271,8 @@ h2 + h3 {
 }
 
 .meny a[aria-current] {
-  background: #fff;
-  color: var(--gron);
+  background: var(--gul);
+  color: #000;
   font-weight: 650;
 }
 
@@ -338,14 +342,14 @@ h2 + h3 {
   gap: var(--s-2) var(--s-4);
   margin: var(--s-4) 0 0;
   padding: var(--s-3) var(--s-4);
-  background: var(--gron-ljus);
+  background: var(--primar-ljus);
   border-radius: var(--radie-stor);
 }
 
 .sprakval-rubrik {
   margin: 0;
   font-size: 1.05rem;
-  color: var(--gron);
+  color: var(--primar);
 }
 
 .sprakknappar {
@@ -371,15 +375,15 @@ h2 + h3 {
 }
 
 .sprakknapp:hover {
-  border-color: var(--gron);
-  color: var(--gron);
+  border-color: var(--primar);
+  color: var(--primar);
   box-shadow: var(--skugga-hover);
 }
 
 .sprakknapp[aria-current="page"] {
-  border-color: var(--gron);
-  box-shadow: inset 0 0 0 1px var(--gron);
-  color: var(--gron);
+  border-color: var(--primar);
+  box-shadow: inset 0 0 0 1px var(--primar);
+  color: var(--primar);
 }
 
 /* Flaggorna har olika proportioner; rutan ger dem samma höjd att centreras i */
@@ -401,7 +405,7 @@ h2 + h3 {
 /* ---------- Sidfot ---------- */
 
 .sidfot {
-  background: var(--gron);
+  background: var(--primar);
   color: #fff;
   font-size: 0.975rem;
   border-top: 4px solid var(--accent);
@@ -426,7 +430,7 @@ h2 + h3 {
   font-family: var(--font-rubrik);
   font-size: 1.15rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--gul);
 }
 
 .sidfot a {
@@ -438,7 +442,7 @@ h2 + h3 {
 }
 
 .sidfot a:focus-visible {
-  outline-color: #fff;
+  outline-color: var(--gul);
 }
 
 /* ---------- Startsida ---------- */
@@ -475,7 +479,7 @@ h2 + h3 {
   padding: var(--s-3) var(--s-4);
   background: var(--yta);
   border: 1px solid var(--linje);
-  border-top: 3px solid var(--gron);
+  border-top: 3px solid var(--primar);
   border-radius: var(--radie);
   text-decoration: none;
   color: var(--text-dampad);
@@ -483,7 +487,7 @@ h2 + h3 {
 }
 
 .genvagar a:hover {
-  border-color: var(--gron);
+  border-color: var(--primar);
   box-shadow: var(--skugga-hover);
   transform: translateY(-1px);
   color: var(--text);
@@ -494,7 +498,7 @@ h2 + h3 {
   font-family: var(--font-rubrik);
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--gron);
+  color: var(--primar);
   margin-bottom: var(--s-1);
 }
 
@@ -553,7 +557,7 @@ h2 + h3 {
 .faktaruta h2 {
   margin: 0;
   padding: var(--s-3) var(--s-4);
-  background: var(--gron);
+  background: var(--primar);
   color: #fff;
   font-size: 1.3rem;
 }
@@ -573,8 +577,8 @@ h2 + h3 {
 
 .faktaruta dt {
   font-weight: 650;
-  color: var(--gron);
-  background: var(--gron-ljusare);
+  color: var(--primar);
+  background: var(--yta-tonad);
 }
 
 .faktaruta dl > :nth-child(1),
@@ -616,8 +620,8 @@ tr:last-child td {
 }
 
 th {
-  background: var(--gron-ljus);
-  color: var(--gron);
+  background: var(--primar-ljus);
+  color: var(--primar);
   font-weight: 650;
 }
 
@@ -653,8 +657,8 @@ th {
   width: 2.25rem;
   height: 2.25rem;
   border-radius: var(--radie-liten);
-  background-color: var(--gron-ljus);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E5E4E' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 3v5h5'/%3E%3Cpath d='M9 13h6M9 17h4'/%3E%3C/svg%3E");
+  background-color: var(--primar-ljus);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23141414' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 3v5h5'/%3E%3Cpath d='M9 13h6M9 17h4'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 1.3rem;
@@ -662,14 +666,14 @@ th {
 }
 
 .dokumentlista a:hover {
-  border-color: var(--gron);
-  color: var(--gron-mork);
+  border-color: var(--primar);
+  color: var(--primar-mork);
   box-shadow: var(--skugga-hover);
   transform: translateY(-1px);
 }
 
 .dokumentlista a:hover::before {
-  background-color: #D8E6DD;
+  background-color: #FFE680;
 }
 
 .dokumentlista a:focus-visible {
@@ -684,9 +688,9 @@ th {
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: var(--gron);
-  background: var(--gron-ljus);
-  border: 1px solid #CFDDD4;
+  color: #000;
+  background: var(--primar-ljus);
+  border: 1px solid var(--gul-kant);
   border-radius: 999px;
   padding: 0.15rem 0.6rem;
 }
@@ -696,7 +700,7 @@ th {
   content: "→";
   margin-left: auto;
   padding-left: var(--s-3);
-  color: var(--gron);
+  color: var(--primar);
   font-weight: 600;
 }
 
@@ -733,7 +737,7 @@ th {
 }
 
 .innehallsforteckning li::marker {
-  color: var(--accent);
+  color: var(--text-dampad);
 }
 
 .innehallsforteckning a {
@@ -743,7 +747,7 @@ th {
 
 /* "Kontakt och akuta ärenden" på För medlemmar */
 .akutruta {
-  background: var(--gron-ljus);
+  background: var(--primar-ljus);
   border-radius: var(--radie-stor);
   padding: var(--s-4) var(--s-4) var(--s-3);
   margin: var(--s-4) 0 var(--s-5);
@@ -776,7 +780,7 @@ th {
 
 .akutruta dt {
   font-weight: 650;
-  color: var(--gron);
+  color: var(--primar);
 }
 
 .akutruta dl > :nth-child(1),
@@ -790,8 +794,8 @@ th {
 
 /* Callout */
 .ruta {
-  background: var(--gron-ljus);
-  border-left: 4px solid var(--accent);
+  background: var(--primar-ljus);
+  border-left: 4px solid var(--gul-kant);
   border-radius: var(--radie-stor);
   padding: var(--s-4);
   margin: var(--s-4) 0;
@@ -829,8 +833,8 @@ th {
   justify-content: center;
   gap: var(--s-2);
   min-height: 2.75rem;
-  background: var(--gron);
-  color: #fff;
+  background: var(--primar);
+  color: var(--gul);
   font-weight: 600;
   text-decoration: none;
   padding: 0.55rem 1.25rem;
@@ -839,8 +843,10 @@ th {
 }
 
 .knapp:hover {
-  background: var(--gron-mork);
-  color: #fff;
+  background: var(--gul);
+  color: #000;
+  outline: 2px solid var(--primar);
+  outline-offset: -2px;
   box-shadow: var(--skugga-hover);
 }
 
@@ -913,7 +919,7 @@ details {
 summary {
   cursor: pointer;
   font-weight: 600;
-  color: var(--gron);
+  color: var(--primar);
 }
 
 details[open] summary {
