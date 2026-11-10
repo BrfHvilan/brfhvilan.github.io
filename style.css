@@ -1,17 +1,65 @@
 /* ==========================================================
    BRF Hvilan – gemensam stilmall för alla sidor
-   Färger ändras enklast i :root nedan.
+   Färger, typsnitt och avstånd ändras enklast i :root nedan.
    ========================================================== */
 
+/* ---------- Typsnitt (lokala, SIL Open Font License – se typsnitt/) ---------- */
+
+@font-face {
+  font-family: "Source Serif 4";
+  src: url("typsnitt/source-serif-4-latin-wght-normal.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("typsnitt/source-sans-3-latin-wght-normal.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --gron: #2E5E4E;          /* huvudfärg */
+  /* Färger */
+  --gron: #2E5E4E;          /* identitetsfärg: rubriker, länkar, sidhuvud */
   --gron-mork: #234A3D;     /* hover/aktiv */
-  --gron-ljus: #EEF4F1;     /* ljus bakgrund för rutor */
-  --text: #222222;
-  --text-dampad: #5A5A5A;
-  --linje: #D9E2DE;
-  --bakgrund: #FFFFFF;
-  --max-bredd: 1000px;
+  --gron-ljus: #E7EFEA;     /* ljusa ytor, hover, rutor */
+  --gron-ljusare: #F1F5F2;  /* mycket ljus yta */
+  --accent: #B5675A;        /* dämpad terrakotta (husets rosa fasad) – bara dekor */
+  --accent-text: #94473C;   /* accent som klarar textkontrast */
+  --text: #2B2E2C;          /* mörkgrå i stället för svart */
+  --text-dampad: #5C625F;
+  --linje: #E3DDD3;         /* varm grå */
+  --bakgrund: #FAF7F2;      /* varm off-white */
+  --yta: #FFFFFF;           /* kort och rader */
+  --akut: #A33A2A;
+  --akut-ljus: #FBEDEA;
+
+  /* Typsnitt */
+  --font-rubrik: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-text: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Avståndsskala 4 / 8 / 16 / 24 / 40 / 64 px */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 1rem;
+  --s-4: 1.5rem;
+  --s-5: 2.5rem;
+  --s-6: 4rem;
+
+  /* Former */
+  --radie: 8px;
+  --radie-liten: 6px;
+  --radie-stor: 10px;
+  --skugga: 0 1px 2px rgba(43, 46, 44, 0.06), 0 1px 3px rgba(43, 46, 44, 0.04);
+  --skugga-hover: 0 2px 4px rgba(43, 46, 44, 0.07), 0 6px 16px rgba(43, 46, 44, 0.07);
+  --overgang: 170ms ease;
+
+  --max-bredd: 1120px;
+  --textbredd: 70ch;
+  --sidhuvud-hojd: 4.5rem;
 }
 
 *,
@@ -24,26 +72,34 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 body {
   margin: 0;
   background: var(--bakgrund);
   color: var(--text);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-text);
   font-size: 1.0625rem;
   line-height: 1.6;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 main {
   flex: 1;
+  padding-bottom: var(--s-6);
 }
 
 .wrap {
   max-width: var(--max-bredd);
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 var(--s-4);
 }
 
 img {
@@ -52,44 +108,80 @@ img {
   display: block;
 }
 
+/* Läsvänlig radlängd för löptext */
+main p,
+main ul:not([class]),
+main ol:not([class]) {
+  max-width: var(--textbredd);
+}
+
 a {
   color: var(--gron);
-  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--overgang), background-color var(--overgang),
+              border-color var(--overgang), box-shadow var(--overgang), transform var(--overgang);
 }
 
 a:hover {
   color: var(--gron-mork);
+  text-decoration-thickness: 2px;
 }
 
-a:focus-visible {
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
   outline: 3px solid var(--gron);
   outline-offset: 2px;
+  border-radius: 2px;
 }
 
+strong {
+  font-weight: 650;
+}
+
+/* ---------- Rubriker ---------- */
+
 h1, h2, h3 {
-  line-height: 1.25;
+  font-family: var(--font-rubrik);
+  font-weight: 600;
+  line-height: 1.2;
   color: var(--gron);
+  letter-spacing: -0.005em;
+  text-wrap: balance;
 }
 
 h1 {
-  font-size: 2rem;
-  margin: 2rem 0 1rem;
+  font-size: clamp(2rem, 1.55rem + 1.8vw, 2.75rem);
+  margin: var(--s-5) 0 var(--s-3);
 }
 
 h2 {
-  font-size: 1.4rem;
-  margin: 2.25rem 0 0.75rem;
+  font-size: clamp(1.45rem, 1.3rem + 0.6vw, 1.75rem);
+  margin: var(--s-6) 0 var(--s-3);
 }
 
 h3 {
-  font-size: 1.1rem;
-  margin: 1.5rem 0 0.5rem;
+  font-size: 1.25rem;
+  margin: var(--s-5) 0 var(--s-2);
+}
+
+h1 + h2,
+h2 + h3 {
+  margin-top: var(--s-4);
 }
 
 .ingress {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
+  line-height: 1.55;
   color: var(--text-dampad);
   margin-top: 0;
+  max-width: 60ch;
+}
+
+.meta {
+  font-size: 0.95rem;
+  color: var(--text-dampad);
 }
 
 /* ---------- Skip-länk (tillgänglighet) ---------- */
@@ -100,11 +192,14 @@ h3 {
 }
 
 .hoppa:focus {
-  left: 1rem;
-  top: 1rem;
-  background: #fff;
-  padding: 0.5rem 1rem;
-  z-index: 10;
+  left: var(--s-3);
+  top: var(--s-3);
+  background: var(--yta);
+  color: var(--gron);
+  padding: var(--s-2) var(--s-3);
+  border-radius: var(--radie-liten);
+  box-shadow: var(--skugga-hover);
+  z-index: 50;
 }
 
 /* ---------- Sidhuvud och meny ---------- */
@@ -112,28 +207,39 @@ h3 {
 .sidhuvud {
   background: var(--gron);
   color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), 0 4px 14px rgba(0, 0, 0, 0.06);
 }
 
 .sidhuvud .wrap {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem 1.5rem;
-  padding-top: 0.9rem;
-  padding-bottom: 0.9rem;
+  gap: var(--s-2) var(--s-4);
+  min-height: var(--sidhuvud-hojd);
+  padding-top: var(--s-2);
+  padding-bottom: var(--s-2);
 }
 
 .logga {
   color: #fff;
   text-decoration: none;
-  font-weight: 700;
-  font-size: 1.25rem;
-  letter-spacing: 0.01em;
+  font-family: var(--font-rubrik);
+  font-weight: 600;
+  font-size: 1.45rem;
+  letter-spacing: 0.005em;
+  margin-right: auto;
 }
 
 .logga:hover {
   color: #fff;
+}
+
+.sidhuvud a:focus-visible,
+.sidhuvud button:focus-visible {
+  outline-color: #fff;
 }
 
 .meny ul {
@@ -142,47 +248,44 @@ h3 {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.25rem;
+  gap: var(--s-1);
 }
 
 .meny a {
   display: block;
   color: #fff;
   text-decoration: none;
-  padding: 0.4rem 0.7rem;
-  border-radius: 4px;
-  font-size: 0.98rem;
+  padding: var(--s-2) 0.85rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .meny a:hover {
-  background: var(--gron-mork);
+  background: rgba(255, 255, 255, 0.13);
   color: #fff;
 }
 
 .meny a[aria-current] {
   background: #fff;
   color: var(--gron);
-  font-weight: 600;
-}
-
-.meny a:focus-visible {
-  outline-color: #fff;
+  font-weight: 650;
 }
 
 /* Liten språkväxlare (SV | EN) i sidhuvudet */
 .sprakvaxlare {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: var(--s-1);
   font-size: 0.9rem;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .sprakvaxlare a,
 .sprakvaxlare [aria-current] {
   color: #fff;
-  padding: 0.3rem 0.45rem;
-  border-radius: 4px;
+  padding: var(--s-1) var(--s-2);
+  border-radius: var(--radie-liten);
 }
 
 .sprakvaxlare [aria-current] {
@@ -190,12 +293,39 @@ h3 {
 }
 
 .sprakvaxlare a:hover {
-  background: var(--gron-mork);
+  background: rgba(255, 255, 255, 0.13);
   color: #fff;
 }
 
-.sprakvaxlare a:focus-visible {
-  outline-color: #fff;
+/* Menyknappen syns bara på smala skärmar när meny.js har laddats.
+   Utan JavaScript visas menyn alltid utfälld. */
+.menyknapp {
+  display: none;
+  align-items: center;
+  gap: var(--s-2);
+  font: inherit;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  transition: background-color var(--overgang);
+}
+
+.menyknapp:hover {
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.menyknapp svg {
+  display: block;
+}
+
+.menyknapp[aria-expanded="true"] .ikon-oppna,
+.menyknapp[aria-expanded="false"] .ikon-stang {
+  display: none;
 }
 
 /* ---------- Språkval på startsidorna ---------- */
@@ -205,22 +335,22 @@ h3 {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem 1.5rem;
-  margin: 1.25rem 0 0;
-  padding: 0.75rem 1rem;
+  gap: var(--s-2) var(--s-4);
+  margin: var(--s-4) 0 0;
+  padding: var(--s-3) var(--s-4);
   background: var(--gron-ljus);
-  border-radius: 6px;
+  border-radius: var(--radie-stor);
 }
 
 .sprakval-rubrik {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--gron);
 }
 
 .sprakknappar {
   display: flex;
-  gap: 0.75rem;
+  gap: var(--s-3);
 }
 
 .sprakknapp {
@@ -228,20 +358,22 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem;
+  gap: var(--s-1);
   min-width: 7.5rem;
-  padding: 0.6rem 1rem;
-  background: #fff;
+  padding: var(--s-2) var(--s-3);
+  background: var(--yta);
   border: 2px solid var(--linje);
-  border-radius: 6px;
+  border-radius: var(--radie);
   color: var(--text);
   font-weight: 600;
   text-decoration: none;
+  box-shadow: var(--skugga);
 }
 
 .sprakknapp:hover {
   border-color: var(--gron);
   color: var(--gron);
+  box-shadow: var(--skugga-hover);
 }
 
 .sprakknapp[aria-current="page"] {
@@ -269,35 +401,54 @@ h3 {
 /* ---------- Sidfot ---------- */
 
 .sidfot {
-  margin-top: 3rem;
-  border-top: 4px solid var(--gron);
-  background: var(--gron-ljus);
-  font-size: 0.95rem;
+  background: var(--gron);
+  color: #fff;
+  font-size: 0.975rem;
+  border-top: 4px solid var(--accent);
 }
 
 .sidfot .wrap {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem 2rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  gap: var(--s-4) var(--s-5);
+  padding-top: var(--s-5);
+  padding-bottom: var(--s-5);
 }
 
 .sidfot p {
-  margin: 0 0 0.25rem;
+  margin: 0 0 var(--s-1);
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .sidfot strong {
-  color: var(--gron);
+  display: block;
+  margin-bottom: var(--s-2);
+  font-family: var(--font-rubrik);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.sidfot a {
+  color: #fff;
+}
+
+.sidfot a:hover {
+  color: #fff;
+}
+
+.sidfot a:focus-visible {
+  outline-color: #fff;
 }
 
 /* ---------- Startsida ---------- */
 
 .hero {
-  margin: 1.5rem 0 0;
-  border-radius: 6px;
+  margin: var(--s-4) 0 0;
+  border-radius: var(--radie-stor);
   overflow: hidden;
-  background: var(--gron-ljus);
+  background: var(--yta);
+  box-shadow: var(--skugga);
 }
 
 .hero img {
@@ -309,33 +460,42 @@ h3 {
 .hero figcaption {
   font-size: 0.9rem;
   color: var(--text-dampad);
-  padding: 0.5rem 0.75rem;
+  padding: var(--s-2) var(--s-3);
 }
 
 .genvagar {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--s-3);
+  margin: var(--s-4) 0;
 }
 
 .genvagar a {
   display: block;
-  padding: 1rem 1.25rem;
+  padding: var(--s-3) var(--s-4);
+  background: var(--yta);
   border: 1px solid var(--linje);
-  border-left: 4px solid var(--gron);
-  border-radius: 4px;
+  border-top: 3px solid var(--gron);
+  border-radius: var(--radie);
   text-decoration: none;
-  color: var(--text);
+  color: var(--text-dampad);
+  box-shadow: var(--skugga);
 }
 
 .genvagar a:hover {
-  background: var(--gron-ljus);
+  border-color: var(--gron);
+  box-shadow: var(--skugga-hover);
+  transform: translateY(-1px);
+  color: var(--text);
 }
 
 .genvagar strong {
   display: block;
+  font-family: var(--font-rubrik);
+  font-size: 1.2rem;
+  font-weight: 600;
   color: var(--gron);
+  margin-bottom: var(--s-1);
 }
 
 /* ---------- Nyheter ---------- */
@@ -344,70 +504,77 @@ h3 {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: grid;
+  gap: var(--s-3);
 }
 
 .nyhet {
-  border-bottom: 1px solid var(--linje);
-  padding: 1.25rem 0;
-}
-
-.nyhet:first-child {
-  padding-top: 0.5rem;
+  background: var(--yta);
+  border: 1px solid var(--linje);
+  border-radius: var(--radie);
+  padding: var(--s-4);
+  box-shadow: var(--skugga);
 }
 
 .nyhet h3,
 .nyhet h2 {
-  margin: 0.15rem 0 0.4rem;
-  font-size: 1.15rem;
+  margin: var(--s-1) 0 var(--s-2);
+  font-size: 1.3rem;
 }
 
 .nyhet time {
-  font-size: 0.9rem;
-  color: var(--text-dampad);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-text);
 }
 
 .nyhet p {
-  margin: 0.3rem 0 0;
+  margin: var(--s-2) 0 0;
 }
 
 .mer {
-  margin-top: 1rem;
+  margin-top: var(--s-4);
   font-weight: 600;
 }
 
 /* ---------- Faktaruta (mäklare) ---------- */
 
 .faktaruta {
-  border: 2px solid var(--gron);
-  border-radius: 6px;
-  margin: 1.5rem 0;
+  background: var(--yta);
+  border: 1px solid var(--linje);
+  border-radius: var(--radie-stor);
+  margin: var(--s-4) 0;
   overflow: hidden;
+  box-shadow: var(--skugga);
 }
 
 .faktaruta h2 {
   margin: 0;
-  padding: 0.75rem 1rem;
+  padding: var(--s-3) var(--s-4);
   background: var(--gron);
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 .faktaruta dl {
   margin: 0;
   display: grid;
-  grid-template-columns: minmax(180px, 38%) 1fr;
+  grid-template-columns: minmax(180px, 36%) 1fr;
 }
 
 .faktaruta dt,
 .faktaruta dd {
   margin: 0;
-  padding: 0.65rem 1rem;
+  padding: 0.7rem var(--s-4);
   border-top: 1px solid var(--linje);
 }
 
 .faktaruta dt {
-  font-weight: 600;
-  background: var(--gron-ljus);
+  font-weight: 650;
+  color: var(--gron);
+  background: var(--gron-ljusare);
 }
 
 .faktaruta dl > :nth-child(1),
@@ -424,25 +591,34 @@ h3 {
 
 .tabell-wrap {
   overflow-x: auto;
+  background: var(--yta);
+  border: 1px solid var(--linje);
+  border-radius: var(--radie);
+  margin: var(--s-3) 0 var(--s-4);
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 0.5rem 0 1rem;
+  margin: 0;
 }
 
 th,
 td {
   text-align: left;
-  padding: 0.55rem 0.75rem;
+  padding: 0.65rem var(--s-3);
   border-bottom: 1px solid var(--linje);
   vertical-align: top;
+}
+
+tr:last-child td {
+  border-bottom: 0;
 }
 
 th {
   background: var(--gron-ljus);
   color: var(--gron);
+  font-weight: 650;
 }
 
 /* ---------- Dokumentlista ---------- */
@@ -450,58 +626,99 @@ th {
 .dokumentlista {
   list-style: none;
   padding: 0;
-  margin: 0.5rem 0 1.5rem;
+  margin: var(--s-3) 0 var(--s-4);
+  display: grid;
+  gap: var(--s-2);
 }
 
-.dokumentlista li {
-  border-bottom: 1px solid var(--linje);
-}
-
+/* Hela raden är länken. Filikonen ritas med CSS så att HTML-koden inte behöver ändras. */
 .dokumentlista a {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 1rem;
-  padding: 0.75rem 0.25rem;
+  gap: var(--s-3);
+  min-height: 3.5rem;
+  padding: 0.8rem var(--s-4) 0.8rem var(--s-3);
+  background: var(--yta);
+  border: 1px solid var(--linje);
+  border-radius: var(--radie);
+  color: var(--text);
+  font-weight: 500;
   text-decoration: none;
+  box-shadow: var(--skugga);
+}
+
+.dokumentlista a::before {
+  content: "";
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radie-liten);
+  background-color: var(--gron-ljus);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E5E4E' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 3v5h5'/%3E%3Cpath d='M9 13h6M9 17h4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1.3rem;
+  transition: background-color var(--overgang);
 }
 
 .dokumentlista a:hover {
-  background: var(--gron-ljus);
+  border-color: var(--gron);
+  color: var(--gron-mork);
+  box-shadow: var(--skugga-hover);
+  transform: translateY(-1px);
 }
 
+.dokumentlista a:hover::before {
+  background-color: #D8E6DD;
+}
+
+.dokumentlista a:focus-visible {
+  outline-offset: 3px;
+  border-radius: var(--radie);
+}
+
+/* Filtypsetikett längst till höger */
 .dokumentlista .typ {
   flex-shrink: 0;
-  font-size: 0.8rem;
+  margin-left: auto;
+  font-size: 0.75rem;
   font-weight: 700;
-  color: #fff;
-  background: var(--gron);
-  border-radius: 3px;
-  padding: 0.1rem 0.45rem;
+  letter-spacing: 0.06em;
+  color: var(--gron);
+  background: var(--gron-ljus);
+  border: 1px solid #CFDDD4;
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+}
+
+/* Rader utan filtyp (t.ex. länkar till ritningssidorna) får en pil i stället */
+.dokumentlista a:not(:has(.typ))::after {
+  content: "→";
+  margin-left: auto;
+  padding-left: var(--s-3);
+  color: var(--gron);
+  font-weight: 600;
 }
 
 /* ---------- Innehållsförteckning och rutor ---------- */
 
-/* Ankarlänkar landar med lite luft ovanför rubriken */
+/* Ankarlänkar landar nedanför det fasta sidhuvudet */
 [id] {
-  scroll-margin-top: 1rem;
-}
-
-.meta {
-  font-size: 0.95rem;
-  color: var(--text-dampad);
+  scroll-margin-top: calc(var(--sidhuvud-hojd) + var(--s-4));
 }
 
 .innehallsforteckning {
-  background: var(--gron-ljus);
-  border-radius: 6px;
-  padding: 1rem 1.25rem;
-  margin: 1.5rem 0 2rem;
+  background: var(--yta);
+  border: 1px solid var(--linje);
+  border-radius: var(--radie-stor);
+  padding: var(--s-4);
+  margin: var(--s-4) 0 var(--s-5);
+  box-shadow: var(--skugga);
 }
 
 .innehallsforteckning h2 {
-  margin: 0 0 0.5rem;
-  font-size: 1.1rem;
+  margin: 0 0 var(--s-2);
+  font-size: 1.2rem;
 }
 
 .innehallsforteckning ul {
@@ -510,23 +727,26 @@ th {
 }
 
 .innehallsforteckning li {
-  margin: 0.35rem 0;
+  margin: var(--s-2) 0;
   color: var(--text-dampad);
   font-size: 0.95rem;
 }
 
+.innehallsforteckning li::marker {
+  color: var(--accent);
+}
+
 .innehallsforteckning a {
-  font-weight: 600;
+  font-weight: 650;
   font-size: 1.0625rem;
 }
 
 /* "Kontakt och akuta ärenden" på För medlemmar */
 .akutruta {
   background: var(--gron-ljus);
-  border: 2px solid var(--gron);
-  border-radius: 6px;
-  padding: 1.25rem 1.5rem;
-  margin: 1.5rem 0 2rem;
+  border-radius: var(--radie-stor);
+  padding: var(--s-4) var(--s-4) var(--s-3);
+  margin: var(--s-4) 0 var(--s-5);
 }
 
 .akutruta h2 {
@@ -534,27 +754,28 @@ th {
 }
 
 .akutruta h3 {
-  margin-top: 1.25rem;
+  margin-top: var(--s-4);
 }
 
 .akutruta dl {
-  margin: 0.5rem 0 1rem;
+  margin: var(--s-2) 0 var(--s-3);
   display: grid;
   grid-template-columns: minmax(150px, 28%) 1fr;
-  background: #fff;
+  background: var(--yta);
   border: 1px solid var(--linje);
-  border-radius: 4px;
+  border-radius: var(--radie);
+  overflow: hidden;
 }
 
 .akutruta dt,
 .akutruta dd {
   margin: 0;
-  padding: 0.65rem 1rem;
+  padding: 0.7rem var(--s-3);
   border-top: 1px solid var(--linje);
 }
 
 .akutruta dt {
-  font-weight: 600;
+  font-weight: 650;
   color: var(--gron);
 }
 
@@ -567,42 +788,68 @@ th {
   margin-bottom: 0;
 }
 
+/* Callout */
 .ruta {
   background: var(--gron-ljus);
-  border-left: 4px solid var(--gron);
-  border-radius: 4px;
-  padding: 1rem 1.25rem;
-  margin: 1rem 0;
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radie-stor);
+  padding: var(--s-4);
+  margin: var(--s-4) 0;
+}
+
+/* Rutor med bara text blir inte bredare än texten */
+.ruta:not(:has(.grupper, .kort, .tabell-wrap)) {
+  width: fit-content;
+  max-width: 100%;
 }
 
 .ruta:not(.akut) h2 {
-  margin: 0 0 0.5rem;
-  font-size: 1.2rem;
+  margin: 0 0 var(--s-2);
+  font-size: 1.35rem;
 }
 
 .ruta p:first-child { margin-top: 0; }
+.ruta p:last-child { margin-bottom: 0; }
+
+.ruta.akut {
+  background: var(--akut-ljus);
+  border-left-color: var(--akut);
+}
+
+.ruta.akut h2,
+.ruta.akut h3 {
+  color: var(--akut);
+  margin-top: 0;
+}
 
 /* Knapplänk, t.ex. till Facebookgruppen på startsidan */
 .knapp {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  min-height: 2.75rem;
   background: var(--gron);
   color: #fff;
   font-weight: 600;
   text-decoration: none;
-  padding: 0.55rem 1.1rem;
-  border-radius: 4px;
+  padding: 0.55rem 1.25rem;
+  border-radius: 999px;
+  box-shadow: var(--skugga);
 }
 
 .knapp:hover {
   background: var(--gron-mork);
   color: #fff;
+  box-shadow: var(--skugga-hover);
 }
 
 /* Knapp utan länk ännu (t.ex. arbetsgrupp som saknar WhatsApp-länk) */
 .knapp-inaktiv,
 .knapp-inaktiv:hover {
-  background: #C9CFCC;
-  color: #4A4A4A;
+  background: #D6D9D7;
+  color: #3F4441;
+  box-shadow: none;
   cursor: default;
 }
 
@@ -610,54 +857,50 @@ th {
 .grupper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin: 1rem 0;
+  gap: var(--s-3);
+  margin: var(--s-3) 0;
 }
 
 .grupper > div {
-  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s-3);
+  background: var(--yta);
   border: 1px solid var(--linje);
-  border-radius: 4px;
-  padding: 1rem;
+  border-radius: var(--radie);
+  padding: var(--s-3) var(--s-4) var(--s-4);
 }
 
 .grupper h3 {
-  margin: 0 0 0.75rem;
-  font-size: 1rem;
-}
-.ruta p:last-child { margin-bottom: 0; }
-
-.ruta.akut {
-  background: #FBEDEA;
-  border-left-color: #A33A2A;
-}
-
-.ruta.akut h2,
-.ruta.akut h3 {
-  color: #A33A2A;
-  margin-top: 0;
+  margin: 0;
+  font-size: 1.1rem;
 }
 
 .kort {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1rem;
-  margin: 1rem 0;
+  gap: var(--s-3);
+  margin: var(--s-3) 0;
 }
 
 .kort > div {
+  background: var(--yta);
   border: 1px solid var(--linje);
-  border-radius: 6px;
-  padding: 1rem 1.25rem;
+  border-radius: var(--radie);
+  padding: var(--s-4);
+  box-shadow: var(--skugga);
 }
 
 .kort h2,
 .kort h3 {
   margin-top: 0;
+  font-size: 1.25rem;
 }
 
 .kort p {
-  margin: 0.3rem 0;
+  margin: var(--s-1) 0;
 }
 
 /* ---------- Vanliga frågor ---------- */
@@ -674,13 +917,13 @@ summary {
 }
 
 details[open] summary {
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--s-2);
 }
 
 /* ---------- Ritningar (ritningar-vilan-16.html och -17.html) ---------- */
 
 .ritningskategori {
-  padding: 0.5rem 0 1rem;
+  padding: var(--s-2) 0 var(--s-3);
 }
 
 .ritningskategori summary h2 {
@@ -689,6 +932,7 @@ details[open] summary {
 }
 
 .ritningskategori .antal {
+  font-family: var(--font-text);
   font-size: 1rem;
   font-weight: 400;
   color: var(--text-dampad);
@@ -697,17 +941,17 @@ details[open] summary {
 .ritningar {
   list-style: none;
   padding: 0;
-  margin: 1rem 0 1.5rem;
+  margin: var(--s-3) 0 var(--s-4);
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
+  gap: var(--s-3);
 }
 
 .ritning {
   border: 1px solid var(--linje);
-  border-radius: 4px;
+  border-radius: var(--radie);
   padding: 0.75rem;
-  background: #fff;
+  background: var(--yta);
 }
 
 .ritning img {
@@ -715,10 +959,11 @@ details[open] summary {
   width: 100%;
   height: auto;
   border: 1px solid var(--linje);
+  border-radius: 4px;
 }
 
 .ritning p {
-  margin: 0.4rem 0 0;
+  margin: var(--s-2) 0 0;
 }
 
 .ritning-titel {
@@ -742,25 +987,82 @@ details[open] summary {
   color: var(--text-dampad);
 }
 
-/* ---------- Mobil ---------- */
+/* ---------- Mellanbredd och mobil ---------- */
+
+@media (max-width: 860px) {
+  /* Med meny.js: menyn fälls ihop bakom en knapp. Utan JS visas den utfälld. */
+  .js-meny .menyknapp {
+    display: inline-flex;
+    order: 3;
+  }
+
+  .js-meny .sprakvaxlare {
+    order: 2;
+  }
+
+  .js-meny .meny {
+    order: 4;
+    flex-basis: 100%;
+    display: none;
+    padding-bottom: var(--s-2);
+  }
+
+  .js-meny .meny.oppen {
+    display: block;
+  }
+
+  .js-meny .meny ul {
+    flex-direction: column;
+  }
+
+  .js-meny .meny a {
+    border-radius: var(--radie);
+    padding: 0.7rem var(--s-3);
+  }
+
+  /* Utan JS: menyn ligger på egen rad under logotypen */
+  html:not(.js-meny) .meny {
+    order: 4;
+    flex-basis: 100%;
+  }
+
+  html:not(.js-meny) .sidhuvud {
+    position: static;
+  }
+}
 
 @media (max-width: 640px) {
   body {
-    font-size: 1rem;
+    font-size: 1.0625rem;
+  }
+
+  .wrap {
+    padding: 0 var(--s-3);
   }
 
   h1 {
-    font-size: 1.6rem;
-    margin-top: 1.5rem;
+    margin-top: var(--s-4);
+  }
+
+  h2 {
+    margin-top: var(--s-5);
   }
 
   .sidhuvud .wrap {
-    flex-direction: column;
-    align-items: flex-start;
+    gap: var(--s-2) var(--s-3);
   }
 
-  .meny a {
-    padding: 0.45rem 0.6rem;
+  .logga {
+    font-size: 1.25rem;
+  }
+
+  .menyknapp {
+    padding: 0.35rem 0.75rem;
+  }
+
+  .sprakvaxlare a,
+  .sprakvaxlare [aria-current] {
+    padding: var(--s-1) 0.35rem;
   }
 
   .faktaruta dl {
@@ -771,7 +1073,6 @@ details[open] summary {
     border-top: 0;
     padding-top: 0.25rem;
   }
-
 
   .hero img {
     aspect-ratio: 3 / 2;
@@ -786,6 +1087,10 @@ details[open] summary {
     min-width: 0;
   }
 
+  .akutruta {
+    padding: var(--s-3);
+  }
+
   .akutruta dl {
     grid-template-columns: 1fr;
   }
@@ -798,24 +1103,110 @@ details[open] summary {
   .akutruta dt {
     padding-bottom: 0.15rem;
   }
+
+  .ruta,
+  .innehallsforteckning,
+  .nyhet {
+    padding: var(--s-3);
+  }
+
+  .dokumentlista a {
+    padding: 0.7rem var(--s-3) 0.7rem 0.75rem;
+    gap: 0.75rem;
+  }
+}
+
+/* ---------- Respektera önskemål om mindre rörelse ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+
+  .genvagar a:hover,
+  .dokumentlista a:hover {
+    transform: none;
+  }
 }
 
 /* ---------- Utskrift ---------- */
 
 @media print {
-  .sidhuvud .meny,
-  .sprakvaxlare,
+  .sidhuvud,
+  .sidfot,
   .sprakval,
+  .menyknapp,
   .hoppa {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+
+  main {
+    padding-bottom: 0;
+  }
+
+  .wrap {
+    max-width: none;
+    padding: 0;
+  }
+
+  h1, h2, h3 {
+    color: #000;
+    break-after: avoid;
+  }
+
+  h2 {
+    margin-top: 1.5rem;
+  }
+
+  a {
+    color: #000;
+  }
+
+  /* Skriv ut adressen efter externa länkar och dokumentlänkar */
+  main a[href^="http"]::after,
+  main a[href$=".pdf"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: #444;
+    word-break: break-all;
+  }
+
+  .ruta,
+  .akutruta,
+  .innehallsforteckning,
+  .nyhet,
+  .kort > div,
+  .faktaruta,
+  .dokumentlista a,
+  .genvagar a,
+  .tabell-wrap {
+    background: #fff;
+    box-shadow: none;
+    border: 1px solid #bbb;
+    break-inside: avoid;
+  }
+
+  .dokumentlista a::before {
     display: none;
   }
 
-  .sidhuvud {
+  .faktaruta h2 {
     background: none;
-    color: var(--text);
+    color: #000;
+    border-bottom: 1px solid #bbb;
   }
 
-  .logga {
-    color: var(--text);
+  .ritning,
+  .hero {
+    break-inside: avoid;
   }
 }
