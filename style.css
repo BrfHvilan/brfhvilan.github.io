@@ -308,13 +308,7 @@ strong {
 
 /* Menyknappen (mobil). Menyn öppnas med en dold kryssruta, så den
    fungerar helt utan JavaScript. */
-.menyval {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-}
-
+.menyval,
 .menyknapp {
   display: none;
 }
@@ -1137,6 +1131,14 @@ details[open] summary {
 
   .sprakvaxlare {
     margin-right: auto;
+  }
+
+  .menyval {
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
   }
 
   .menyknapp {

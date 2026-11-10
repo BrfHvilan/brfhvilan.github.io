@@ -15,7 +15,17 @@
   <header class="sidhuvud">
     <div class="wrap">
       <a class="logga" href="index.html">BRF Hvilan</a>
-      <nav class="meny" aria-label="Main menu">
+      <nav class="sprakvaxlare" aria-label="Språk / Language">
+        <a href="../maklare.html" lang="sv" hreflang="sv" data-lang="sv" aria-label="Svenska – läs sidan på svenska">SV</a>
+        <span aria-hidden="true">|</span>
+        <span aria-current="true" lang="en">EN</span>
+      </nav>
+      <input type="checkbox" id="menyval" class="menyval" aria-label="Menu" aria-controls="huvudmeny">
+      <label class="menyknapp" for="menyval" aria-hidden="true">
+        <svg class="ikon-oppna" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9h16M4 15h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <svg class="ikon-stang" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </label>
+      <nav class="meny" id="huvudmeny" aria-label="Main menu">
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="aktuellt.html">News</a></li>
@@ -25,11 +35,7 @@
           <li><a href="kontakt.html">Contact</a></li>
         </ul>
       </nav>
-      <nav class="sprakvaxlare" aria-label="Språk / Language">
-        <a href="../maklare.html" lang="sv" hreflang="sv" data-lang="sv" aria-label="Svenska – läs sidan på svenska">SV</a>
-        <span aria-hidden="true">|</span>
-        <span aria-current="true" lang="en">EN</span>
-      </nav>
+      <a class="felanmalan-knapp" href="kontakt.html#felanmalan">Report a fault</a>
     </div>
   </header>
   <!-- ===== SLUT SIDHUVUD ===== -->
